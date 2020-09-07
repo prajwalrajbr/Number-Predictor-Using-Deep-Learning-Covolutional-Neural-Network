@@ -1,9 +1,9 @@
 class testDataPreprocessing:
 
-    def checkColumns(self, i, testArray):
-        column = i
-        for j in range(28):
-            if testArray[j][i] != 0:
+    def checkColumns(self, j, testArray):
+        column = j
+        for i in range(28):
+            if testArray[i][j] != 0:
                 column = 999
         return column
 
@@ -13,7 +13,7 @@ class testDataPreprocessing:
             for j in range(28):
                 arr[i][j] = 0
         for i in range(28):
-            mid = 14-int(((end-start)/2))
+            mid = int(28/2)-int(((end-start)/2))
             # for j in range(x, (x+(z-y))):
             for j in range(start, end+1):
                 arr[i][mid] = testArray[i][j]
@@ -22,7 +22,7 @@ class testDataPreprocessing:
 
     def findEmptyColumns(self, columns):
         emptyColumns = []
-        for i in range(28):
+        for i in range(56):
             if columns[i] != 999:
                 emptyColumns.append(i)
         return emptyColumns
@@ -30,7 +30,7 @@ class testDataPreprocessing:
     def separatingNumbersAndPredicting(self, emptyColumns, testArray, CNN_model):
         predictedNumber = ""
         start = 0
-        end = 27
+        end = 55
         for i in range(len(emptyColumns)):
             if start == emptyColumns[i]:
                 pass
@@ -45,7 +45,7 @@ class testDataPreprocessing:
             pass
         else:
             # Predicting the number
-            predictedNumber += str(CNN_model.predictNumber(self.createTestData(start, 27, testArray)))
+            predictedNumber += str(CNN_model.predictNumber(self.createTestData(start, 55, testArray)))
         return predictedNumber
 
 

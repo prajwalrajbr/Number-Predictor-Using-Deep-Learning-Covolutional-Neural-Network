@@ -16,8 +16,8 @@ if __name__ == "__main__":
 
     # Store the column values
     columns = []
-    for i in range(28):
-        columns.append(testDP.checkColumns(i, testArray))
+    for j in range(56):
+        columns.append(testDP.checkColumns(j, testArray))
 
     # Store the empty columns
     emptyColumns = testDP.findEmptyColumns(columns)
@@ -26,4 +26,5 @@ if __name__ == "__main__":
     predictedNumber = testDP.separatingNumbersAndPredicting(emptyColumns, testArray, CNN_model)
 
     # Output the predicted Number
+    print("Predicted Number = " + predictedNumber)
     draw.showPredictedNo(predictedNumber)
